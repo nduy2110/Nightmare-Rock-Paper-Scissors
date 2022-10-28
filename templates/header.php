@@ -14,10 +14,10 @@
         <div class="container-fluid nav-div">
             <ul class="header-nav">
                 <li> <a href="../Home/home.php">Home</a></li>
-                <li> <a href="">Register</a></li>
+                <li> <a href="../Login/register.php">Register</a></li>
                 <li> <a href="../Game/game.php">Play</a></li>
                 <li> <a href="../Ranking/">Ranking</a></li>
-                <li> <a href="/src/Upload/index.php">Upload</a></li>
+                <li> <a href="../Upload/index.php">Profile</a></li>
             </ul>
         </div>
     </header>
