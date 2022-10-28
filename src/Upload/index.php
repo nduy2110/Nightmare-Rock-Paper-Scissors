@@ -14,6 +14,8 @@ if (!isset($_SESSION['name'])) {
 // Adding more protection
 // CVE-2020–35498 : https://blog.wpsec.com/contact-form-7-vulnerability/
 function change_name($filename) {
+    
+    $filename = basename($filename);
     $parts = explode('.', $filename);
 
     if (count($parts) < 2) {
@@ -38,6 +40,8 @@ function change_name($filename) {
         $filename .= '.' . $ext;
     }
 
+    $filename = preg_replace('/[\pC\pZ]+/i', '', $filename); // <- Cannot find CVE's correct PoC, change source code a little bit!
+
     return $filename;
 }
 
@@ -46,13 +50,14 @@ if(isset($_FILES["file"])) {
     $success = '';
     try {
         $filename = $_FILES["file"]["name"];
-        $filename = change_name($filename);
+        $filename = change_name($filename); // Payload: mal.php + any unicode character
         $dir = $_SESSION['dir'];
         print_r($_SESSION); # DEBUG
         $file = $dir . "/" . $filename;
         move_uploaded_file($_FILES["file"]["tmp_name"], $file);
         $relative_path = substr($file, strlen($_SESSION['root'])); // Extract only relative
-        # Todo: add $file to database !
+        # Todo: add $relative_path to database !
+        # Todo: path traversal via apache misconfiguration
         $success = 'Successfully uploaded file at: <a href="' . $relative_path . '">' . $relative_path . ' </a><br>';
     } catch(Exception $e) {
         $error = $e->getMessage();
