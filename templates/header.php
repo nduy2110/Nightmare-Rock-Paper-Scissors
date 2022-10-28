@@ -11,10 +11,10 @@
 
 <body style="min-height: 100%">
     <header>
-        <div class="container-fluid nav-div">
-            <ul class="header-nav">
+        <div class="container-fluid nav-div mb-3" style="height: 75px; align-items: center; line-height: 75px">
+            <ul class="header-nav" style="font-size: 25px">
                 <li> <a href="../Home/home.php">Home</a></li>
-                <li> <a href="../Login/register.php">Register</a></li>
+                <li> <a href="../Login/login.php">Login</a></li>
                 <li> <a href="../Game/game.php">Play</a></li>
                 <li> <a href="../Ranking/">Ranking</a></li>
                 <li> <a href="../Upload/index.php">Profile</a></li>
