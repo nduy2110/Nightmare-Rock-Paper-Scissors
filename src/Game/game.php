@@ -33,7 +33,7 @@
     }
 
     
-    $query = "SELECT * FROM score WHERE username='$username'";
+    $query = "SELECT id,username,point FROM score WHERE username='$username'";
     $execute = mysqli_query($conn, $query);
     $temp_arr = mysqli_fetch_assoc($execute);
     $id = $temp_arr['id'];
@@ -44,12 +44,10 @@
         $point = $temp_arr['point'] + 1;
         $query = "UPDATE score SET point=$point WHERE id=$id";
         $execute = mysqli_query($conn, $query);
-        print("point++");
     } else if (strpos($result, 'Lose') != FALSE) {
         $point = $temp_arr['point'] - 1;
         $query = "UPDATE score SET point=$point WHERE id=$id";
         $execute = mysqli_query($conn, $query);
-        print("point--");
     }
 
     $conn->close();
