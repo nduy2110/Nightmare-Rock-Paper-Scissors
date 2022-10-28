@@ -15,14 +15,9 @@
             <ul class="header-nav">
                 <li> <a href="../Home/home.php">Home</a></li>
                 <li> <a href="">Register</a></li>
-<<<<<<< HEAD
                 <li> <a href="../Game/game.php">Play</a></li>
                 <li> <a href="../Ranking/">Ranking</a></li>
-=======
-                <li> <a href="">Play</a></li>
-                <li> <a href="">Ranking</a></li>
                 <li> <a href="/src/Upload/index.php">Upload</a></li>
->>>>>>> 35b34490e69b32e3df103b99acc862877375698a
             </ul>
         </div>
     </header>
