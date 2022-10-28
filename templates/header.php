@@ -17,6 +17,7 @@
                 <li> <a href="">Register</a></li>
                 <li> <a href="">Play</a></li>
                 <li> <a href="">Ranking</a></li>
+                <li> <a href="/src/Upload/index.php">Upload</a></li>
             </ul>
         </div>
     </header>
