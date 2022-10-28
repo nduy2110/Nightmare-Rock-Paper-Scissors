@@ -48,7 +48,10 @@
             <h4>Đăng Nhập</h4>
             <?php if(isset($_SESSION["success"])) {
                 echo "<h6 class='text-info'>Đăng ký thành công, tiến hành đăng nhập</h6>";
-            } ?>
+            } else {
+                echo "<h6 class='text-info'> <a href='register.php'>Nhân vào đây để đăng ký</a> </h6>";
+            }
+            ?>
             <label for="username" class="form-label">Username:</label>
             <input type="text" name="username" class="form-control">
             <label for="password" class="form-label">Password:</label>

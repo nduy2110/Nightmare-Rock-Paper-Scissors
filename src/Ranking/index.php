@@ -45,18 +45,18 @@
 
     ?>
     <h1 align = "center"> Score Board </h1>
-    <table id="customers">
+    <table id="customers" class="container ">
                 <tr>
                     <td>
                             <form action = "" method = "get">
-                                <input type = "text" name = "search" value = 
+                                <input class="form-control w-25" type = "text" name = "search" value = 
                                 "<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" >
-                                <input type = "button" value = " Search" onclick = "window.location.href = 'search.php'">
+                                <input class="btn btn-primary mt-3" type = "button" value = " Search" onclick = "window.location.href = 'search.php'">
                             </form>
                     </td>
                 </tr>
     </table>
-    <table id="customers">
+    <table id="customers" class="container table">
                         <tr>
                             <th>Username</th>
                             <th>Score</th>
