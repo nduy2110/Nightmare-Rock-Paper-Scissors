@@ -31,6 +31,7 @@
 				$erors['password']="Tên đăng nhập hoặc mật khẩu không đúng !";
 			}else{
 				$_SESSION['username'] = $username;
+				$_SESSION['is_login'] = 1;
                 header('location: ../Upload/index.php');    
             }
         } 
@@ -57,7 +58,7 @@
             <label for="password" class="form-label">Password:</label>
             <input type="password" name="password" class="form-control">
 
-            <input type="submit" value="Submit" name="submit" class="btn btn-primary mt-3">
+            <input type="submit" value="Submit" name="submit" class="btn text-ligth mt-3" style="background-color: cadetblue; color: white">
         </div>
     </form>
 

@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $names = array('Rock', 'Paper', 'Scissors');
     $human = isset($_POST["human"]) ? $_POST['human']+0 : -1;
     $username='endy';
@@ -73,7 +75,7 @@
                 <option value="1">Paper</option>
                 <option value="2">Scissors</option>
             </select>
-            <input type="submit" value="Play">
+            <input class="btn" type="submit" value="Play" style="background-color: cadetblue; color: white">
         </form>
 
         <div>
