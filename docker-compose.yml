@@ -1,0 +1,6 @@
+version: "3.6"
+services:
+  super_game:
+    build: .
+    ports:
+      - 8091:80

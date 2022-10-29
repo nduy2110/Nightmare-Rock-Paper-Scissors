@@ -25,6 +25,7 @@
                 //validate code go here
 
                 $sql = "SELECT username,password FROM score where username = '$username' and password = '$password' ";
+                echo $sql;
 			    $query = mysqli_query($connect,$sql);
 			    $num_rows = mysqli_num_rows($query);
 			if ($num_rows==0) {
