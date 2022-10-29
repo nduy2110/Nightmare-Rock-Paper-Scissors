@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
             
-    <?php include('../../templates/header.php');?>
+    <?php 
+    session_start();
+    include('../../templates/header.php');
+    ?>
 
     <style>
             #customers {
@@ -25,6 +28,8 @@
     </style>
 
     <?php
+
+
     $count = 1;
     // ket noi du lieu 
     $conn = mysqli_connect("localhost", "root", "","rank");
@@ -51,7 +56,7 @@
                             <form action = "" method = "get">
                                 <input class="form-control w-25" type = "text" name = "search" value = 
                                 "<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" >
-                                <input class="btn btn-primary mt-3" type = "button" value = " Search" onclick = "window.location.href = 'search.php'">
+                                <input class="btn mt-3" type = "button" value = " Search" onclick = "window.location.href = 'search.php'" style="background-color: cadetblue; color: white">
                             </form>
                     </td>
                 </tr>

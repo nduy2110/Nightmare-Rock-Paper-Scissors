@@ -11,6 +11,7 @@ if (!isset($_SESSION['name'])) {
     die();
 }
 
+
 // Adding more protection
 // CVE-2020–35498 : https://blog.wpsec.com/contact-form-7-vulnerability/
 function change_name($filename) {
@@ -69,14 +70,27 @@ if(isset($_FILES["file"])) {
 <!DOCTYPE html>
 <html lang="en">
 
-    <?php include("../../templates/header.php"); ?>
+    <?php 
+        include("../../templates/header.php"); 
+        if(isset($_SESSION['username'])) {
+            echo '
+            <form class="form-controls container" method="post" enctype="multipart/form-data">
+                Select file to upload:
+                <input class="btn" type="file" name="file" id="file">
+                <br/>
+                <input class="btn text-light" style="background-color: cadetblue" type="submit">
+            </form>
+            ';
+            if(isset($success)) {echo $success;}
+        } else {
+            echo '
+                <div class="container">
+                    <h5>Đăng nhập trước đã fen. <a href="../Login/login.php">Login</a></h5>
+                </div>
+            ';
+        }
+    ?>
+    
 
-    <form method="post" enctype="multipart/form-data">
-        Select file to upload:
-        <input type="file" name="file" id="file">
-        <br/>
-        <input type="submit">
-    </form>
-    <?php if(isset($success)) {echo $success;} ?>
 </body>
 </html>

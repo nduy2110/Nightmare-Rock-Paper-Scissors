@@ -1,7 +1,7 @@
 <?php
 
-// Create folder for each user
 session_start();
+
 
 #unset($_SESSION['dir']);
 # Root directory at Nightmare-Rock-Paper-Scissors !

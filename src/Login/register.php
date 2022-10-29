@@ -62,7 +62,7 @@
             <input type="password" name="password" class="form-control">
             <div class="text-danger"><?php echo $erors["password"] ?></div>
 
-            <input type="submit" value="Submit" name="submit" class="btn btn-primary mt-3">
+            <input type="submit" value="Submit" name="submit" class="btn mt-3 text-ligth" style="background-color: cadetblue;color: white">
         </div>
     </form>
 
