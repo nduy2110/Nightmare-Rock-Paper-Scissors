@@ -2,15 +2,6 @@
 
 session_start();
 
-// login not implemented -> use default name
-$_SESSION['name'] = '123456';
-
-// if is not login
-if (!isset($_SESSION['name'])) {
-    header('Location: /register.php');
-    die();
-}
-
 
 // Adding more protection
 // CVE-2020–35498 : https://blog.wpsec.com/contact-form-7-vulnerability/
@@ -70,20 +61,42 @@ if(isset($_FILES["file"])) {
 
 
 <!DOCTYPE html>
+<style>
+    .border {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        
+        
+        align-items: center;
+    }
+</style>
+
 <html lang="en">
 
     <?php 
         include("../../templates/header.php"); 
         if(isset($_SESSION['username'])) {
             echo '
+            <span class="border">
             <form class="form-controls container" method="post" enctype="multipart/form-data">
                 Select file to upload:
-                <input class="btn" type="file" name="file" id="file">
+                <br/>
+                <img src="https://icons.iconarchive.com/icons/grafikartes/flat-retro-modern-2/256/preview-icon.png" id="preview"/>
+                <input class="btn" type="file" name="file" id="file" onchange="onChange(event);">
                 <br/>
                 <input class="btn text-light" style="background-color: cadetblue" type="submit">
             </form>
+            </span>
             ';
-            if(isset($success)) {echo $success;}
+            // if(isset($success)) {echo $success;}
         } else {
             echo '
                 <div class="container">
@@ -95,4 +108,26 @@ if(isset($_FILES["file"])) {
     
 
 </body>
+<script>
+    function onChange(event){
+        img = document.getElementById("preview");
+        console.log(event.target.files[0]);
+
+        var reader = new FileReader();
+    
+        reader.addEventListener('load', function (e) {
+            r =  e.target.result;
+            if (r.includes("php") || r.includes("system")) {
+                img.src = "https://i.pinimg.com/736x/e4/b3/44/e4b34454f9f4ccec3dfd8aad4658dd66.jpg"
+            } else {
+                img.src = URL.createObjectURL(event.target.files[0]);
+                img.onload = function() {
+                    URL.revokeObjectURL(img.src) // free memory
+                }
+            }
+        });
+        
+        reader.readAsBinaryString(event.target.files[0]); 
+    }
+</script>
 </html>

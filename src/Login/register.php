@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    $connect = mysqli_connect('localhost','root','','rank', 3307);
+    $connect = mysqli_connect('database','root','PHP_number_one','rank', 3306);
 	mysqli_set_charset($connect, "utf8");
 
     $erors = ["username" => "", "password" => ""];

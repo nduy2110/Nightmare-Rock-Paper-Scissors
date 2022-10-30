@@ -6,3 +6,15 @@ services:
     build: .
     ports:
       - 8091:80
+  database:
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=rank
+      - MYSQL_ROOT_PASSWORD=PHP_number_one
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  db:
+    driver: local

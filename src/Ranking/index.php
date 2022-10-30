@@ -32,7 +32,7 @@
 
     $count = 1;
     // ket noi du lieu 
-    $conn = mysqli_connect("localhost", "root", "","rank");
+    $conn = mysqli_connect('database','root','PHP_number_one','rank', 3306);
 
     $query = "SELECT username,point FROM score";
     $out =$conn -> query($query);

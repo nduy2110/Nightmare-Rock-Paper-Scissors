@@ -29,7 +29,7 @@
 
     $result = check($computer, $human);
 
-    $conn = mysqli_connect("localhost", "root", "","rank", 3307);
+    $conn = mysqli_connect('database','root','PHP_number_one','rank', 3306);
     if(!$conn) {
         echo mysqli_connect_error();
     }

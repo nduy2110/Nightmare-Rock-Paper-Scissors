@@ -22,7 +22,7 @@ $dir = $_SESSION['dir'];
 
 if ( !file_exists($dir) )
     mkdir($dir);
-var_dump($_SESSION['dir']); # DEBUG
+#var_dump($_SESSION['dir']); # DEBUG
 ?>
 
 <!DOCTYPE html>
