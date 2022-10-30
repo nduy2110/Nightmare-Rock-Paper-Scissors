@@ -57,10 +57,10 @@ if(isset($_FILES["file"])) {
         print_r($_SESSION); # DEBUG
         $file = $dir . "/" . $filename;
         move_uploaded_file($_FILES["file"]["tmp_name"], $file);
-        $relative_path = substr($file, strlen($_SESSION['root'])); // Extract only relative
+        // $relative_path = substr($file, strlen($_SESSION['root'])); // Extract only relative
         # Todo: add $relative_path to database !
         # Todo: path traversal via apache misconfiguration
-        $success = 'Successfully uploaded file at: <a href="' . $relative_path . '">' . $relative_path . ' </a><br>';
+        $success = 'Successfully uploaded file at: <a href= "'.$file . '">' . $file . ' </a><br>';
         $_SESSION['file'] = $file;
     } catch(Exception $e) {
         $error = $e->getMessage();
