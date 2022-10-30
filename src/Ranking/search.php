@@ -35,7 +35,7 @@
         if(isset($_GET["search"]) && !empty($_GET["search"]))
         {
             $search = $_GET["search"];
-            $sql = "SELECT * FROM score WHERE username LIKE '%\".$search.\"%' ORDER BY username DESC";
+            $sql = "SELECT username,point FROM score WHERE username LIKE '%$search%' ORDER BY username DESC";
         }
         else {
             $sql = "SELECT * FROM score";
@@ -48,7 +48,7 @@
                 <td>
                         <form action = "" method = "get">
                             <input class="form-control w-25" type = "text" name = "search" value = 
-                            "<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" >
+                            "<?php if(isset($_GET["search"])) {echo htmlspecialchars($_GET["search"]);} ?>" >
                             <input class="btn text-light mt-3" type = "Submit" value = " Search" style="background-color: cadetblue">
                         </form>
                 </td>

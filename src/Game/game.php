@@ -83,7 +83,7 @@
                 if ( $human == -1 ) {
                     print "Please select a strategy and press Play.\n";
                 } else if ( $human < 3 ) {
-                    print "Bạn chọn $names[$human], máy chọn $names[$computer]\n <br> $result";
+                    print "Bạn chọn $names[$human], máy chọn $names[$computer]\n <br> <p class='text-danger'>$result</p>";
                 } else {
                     print "Hacked???";
                 }

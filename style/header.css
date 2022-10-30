@@ -5,9 +5,8 @@
 .header-nav {
     list-style: none;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    font-size: 25px;
 }
 
 .header-nav a {
