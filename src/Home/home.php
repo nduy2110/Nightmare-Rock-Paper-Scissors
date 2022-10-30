@@ -28,6 +28,7 @@ var_dump($_SESSION['dir']); # DEBUG
 <!DOCTYPE html>
 <html lang="en">
 
+    
     <?php include('../../templates/header.php')?>
 
     <div  class="container w-50 p-3">

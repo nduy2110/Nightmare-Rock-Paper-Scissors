@@ -56,11 +56,11 @@
             <h4>Đăng ký</h4>
             <label for="username" class="form-label">Username:</label>
             <input type="text" name="username" class="form-control">
-            <div class="text-danger"><?php echo $erors["username"] ?></div>
+            <div class="text-danger"><?php echo htmlspecialchars($erors["username"]) ?></div>
 
             <label for="password" class="form-label">Password:</label>
             <input type="password" name="password" class="form-control">
-            <div class="text-danger"><?php echo $erors["password"] ?></div>
+            <div class="text-danger"><?php echo htmlspecialchars($erors["password"]) ?></div>
 
             <input type="submit" value="Submit" name="submit" class="btn mt-3 text-ligth" style="background-color: cadetblue;color: white">
         </div>
