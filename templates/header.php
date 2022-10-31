@@ -24,7 +24,7 @@
                     }
                     ?>
                     <li> <a href="../Game/game.php">Play</a></li>
-                    <li> <a href="../Ranking/">Ranking</a></li>
+                    <li> <a href="../Ranking/rank.php">Ranking</a></li>
                     <li> <a href="../Upload/index.php">Profile</a></li>
                 </div>
                 
