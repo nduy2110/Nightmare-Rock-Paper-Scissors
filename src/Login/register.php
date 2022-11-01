@@ -37,7 +37,7 @@
                 $query = "INSERT INTO score (username, password) VALUE ('$username', '$password')";
                 mysqli_query($connect, $query);
 
-                $_SESSION['success'] = "You are now logged in";
+                $_SESSION['success'] = 1;
                 header('location: login.php');
         }
 

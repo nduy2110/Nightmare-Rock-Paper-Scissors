@@ -95,8 +95,10 @@ if(isset($_FILES["file"])) {
                 <input class="btn text-light" style="background-color: cadetblue" type="submit">
             </form>
             </span>
+            <div class="container text-center">
+                <a href="../Login/changepass.php">Đổi mật khẩu</a>
+            </div>
             ';
-            // if(isset($success)) {echo $success;}
         } else {
             echo '
                 <div class="container">

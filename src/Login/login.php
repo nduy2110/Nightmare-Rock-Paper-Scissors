@@ -21,16 +21,16 @@
 
         //authentication
         if(!array_filter($erors)) {
-            
-                //validate code go here
-
-                $sql = "SELECT username,password FROM score where username = '$username' and password = '$password' ";
+        
+                $sql = "SELECT username,password FROM score where password = '$password' and username = '$username'";
 			    $query = mysqli_query($connect,$sql);
 			    $num_rows = mysqli_num_rows($query);
+                $row = mysqli_fetch_array($query);
+                
 			if ($num_rows==0) {
 				$erors['password']="Tên đăng nhập hoặc mật khẩu không đúng !";
 			}else{
-				$_SESSION['username'] = $username;
+				$_SESSION['username'] = $row["username"];
 				$_SESSION['is_login'] = 1;
                 header('location: ../Upload/index.php');    
             }
