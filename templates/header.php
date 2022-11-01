@@ -35,7 +35,7 @@
                         }
                             
                         if(isset($_SESSION['file'])) {
-                            echo '<li> <img src="'.$_SESSION['file'] .'"width="50px" style="border-radius: 50%;"> </li>';
+                            echo '<li> <img src="../Upload/img.php/'.$_SESSION['file'].'"width="50px" style="border-radius: 50%;"> </li>';
                         }
                     ?>
                 </div>
