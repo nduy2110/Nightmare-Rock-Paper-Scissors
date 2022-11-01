@@ -52,7 +52,8 @@ if(isset($_FILES["file"])) {
         # Todo: add $relative_path to database !
         # Todo: path traversal via apache misconfiguration
         $success = 'Successfully uploaded file at: <a href= "'.$file . '">' . $file . ' </a><br>';
-        $_SESSION['file'] = $file;
+        $_SESSION['file'] = substr($file, 3);
+        var_dump($_SESSION['file']);
     } catch(Exception $e) {
         $error = $e->getMessage();
     }
