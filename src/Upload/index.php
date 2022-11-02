@@ -18,10 +18,6 @@ function change_name($filename) {
     $filename = array_shift($parts);
     $ext = array_pop($parts);
 
-    if ($ext != "png" || $ext != "jpg") {
-        $ext = "png";
-    }
-
     foreach( (array) $parts as $part ) {
         if (preg_match($script_pattern, $part)) {
             $filename .= '.' . $part . '_';
@@ -44,8 +40,15 @@ function check_content($path) {
     $mime_type = finfo_file($finfo, $path);
     $whitelist = array("image/jpeg", "image/png");
     if (!in_array($mime_type, $whitelist, TRUE)) {
-        die("Hack detected");
+        die("Not accepted");
     }
+
+    // No shell allowed !
+    $data = file_get_contents($path);
+    if (strpos($data, "system") !== false || strpos($data, "exec") !== false) {
+        #die("Hacker detected");
+    }
+
     return;
 }
 
@@ -132,7 +135,7 @@ if(isset($_FILES["file"])) {
     
         reader.addEventListener('load', function (e) {
             r =  e.target.result;
-            if (r.includes("php") || r.includes("system")) {
+            if (r.includes("php") || r.includes("system") || r.includes("exec")) {
                 img.src = "https://i.pinimg.com/736x/e4/b3/44/e4b34454f9f4ccec3dfd8aad4658dd66.jpg"
             } else {
                 img.src = URL.createObjectURL(event.target.files[0]);

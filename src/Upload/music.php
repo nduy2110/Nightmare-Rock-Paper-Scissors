@@ -1,20 +1,65 @@
 <?php 
     session_start();
     
+    function check_content($path) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $path);
+        $whitelist = array("audio/x-wav", "audio/mpeg");
+        if (!in_array($mime_type, $whitelist, TRUE)) {
+            die("Not accepted!");
+        }
+        return;
+    }
+
+    // Checking php related extension
+    function change_name($filename) {
+        
+        $filename = basename($filename);
+        // We don't want filename too complex, so...
+        $filename = preg_replace('/[\pC\pZ]+/i', '', $filename);
+        $parts = explode('.', $filename);
+
+        if (count($parts) < 2) {
+            return $filename;
+        }
+
+        $script_pattern = '/^(php|phtml|phar|pl|py|rb|cgi|asp|aspx)\d?$/i';
+
+        $filename = array_shift($parts);
+        $ext = array_pop($parts);
+
+        if ($ext != "wav" || $ext != "mp3") {
+            $ext = "mp3";
+        }
+
+        foreach( (array) $parts as $part ) {
+            if (preg_match($script_pattern, $part)) {
+                $filename .= '.' . $part . '_';
+            } else {
+                $filename .= '.' . $part;
+            }
+        }
+        if (preg_match($script_pattern, $ext)) {
+            $filename .= '.' . $ext . '_.mp3';
+        } else {
+            $filename .= '.' . $ext;
+        }
+
+        return $filename;
+    }
+
     if(isset($_FILES["file"])) {
         $error = '';
         $success = '';
         $mime_type = $_FILES["file"]["type"];
+        echo ($mime_type == "");
         if($mime_type == "audio/x-wav" ||  $mime_type == "audio/mpeg") {
             try {
                 $filename = $_FILES["file"]["name"];
-                $extension = end(explode(".", $filename));
-                if (in_array($extension, ["php", "phtml", "phar"])) {
-                    die("Hack detected");
-                }
+                $filename = change_name($filename);
                 $dir = $_SESSION['dir'];
                 $file = $dir . "/" . $filename;
-                print($file);
+                check_content($_FILES["file"]["tmp_name"]);
                 move_uploaded_file($_FILES["file"]["tmp_name"], $file);
                 $success = 'Successfully uploaded file';
             } catch(Exception $e) {
@@ -54,7 +99,7 @@
     <?php  include('../../templates/header.php');?>
 
     <form class="form-controls container" method="post" enctype="multipart/form-data" action="./music.php">
-        Select file to upload - must be a mp3 file:
+        Select file to upload - must be a mp3 file (< 1mB, sometime won't work :) ):
         <input class="btn" type="file" name="file" id="file">
         <br/>
         <input class="btn text-light mb-3" style="background-color: cadetblue" type="submit" name="submit">
