@@ -7,7 +7,7 @@ session_start();
 # Root directory at Nightmare-Rock-Paper-Scissors !
 # Current file at Nightmare-Rock-Paper-Scissors/src/home.php 
 # Upload folder at Nightmare-Rock-Paper-Scissors/upload
-$_SESSION['root'] = dirname(__FILE__) . '/..';
+$_SESSION['root'] = dirname(__FILE__) . '/../..';
 
 # Create upload folder
 if ( !file_exists($_SESSION['root'] . '/upload') )
@@ -16,7 +16,7 @@ if ( !file_exists($_SESSION['root'] . '/upload') )
 
 # Create session's folder
 if (!isset($_SESSION['dir'])) {
-    $_SESSION['dir'] = dirname(__FILE__). '/../upload/' . session_id(); 
+    $_SESSION['dir'] =$_SESSION['root'] . '/upload' . '/' . session_id(); 
 }
 $dir = $_SESSION['dir'];
 
