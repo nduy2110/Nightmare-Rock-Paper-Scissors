@@ -22,7 +22,7 @@
         //authentication
         if(!array_filter($erors)) {
         
-                $sql = "SELECT username,password FROM score where password = '$password' and username = '$username'";
+                $sql = "SELECT username,password,id FROM score where password = '$password' and username = '$username'";
 			    $query = mysqli_query($connect,$sql);
 			    $num_rows = mysqli_num_rows($query);
                 $row = mysqli_fetch_array($query);
@@ -32,6 +32,7 @@
 			}else{
 				$_SESSION['username'] = $row["username"];
 				$_SESSION['is_login'] = 1;
+                $_SESSION['id'] = $row["id"];
                 header('location: ../Upload/index.php');    
             }
         } 
