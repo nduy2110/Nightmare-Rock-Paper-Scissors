@@ -43,17 +43,11 @@ if(isset($_FILES["file"])) {
     try {
         $filename = $_FILES["file"]["name"];
         $filename = change_name($filename); // Payload: mal.php + any unicode character
-        // $dir = $_SESSION['dir'];
-        $dir = '../upload/' . session_id();
-        print_r($_SESSION); # DEBUG
+        $dir = $_SESSION['dir'];
         $file = $dir . "/" . $filename;
         move_uploaded_file($_FILES["file"]["tmp_name"], $file);
-        // $relative_path = substr($file, strlen($_SESSION['root'])); // Extract only relative
-        # Todo: add $relative_path to database !
-        # Todo: path traversal via apache misconfiguration
         $success = 'Successfully uploaded file at: <a href= "'.$file . '">' . $file . ' </a><br>';
-        $_SESSION['file'] = substr($file, 3);
-        var_dump($_SESSION['file']);
+        $_SESSION['file'] = $file;
     } catch(Exception $e) {
         $error = $e->getMessage();
     }

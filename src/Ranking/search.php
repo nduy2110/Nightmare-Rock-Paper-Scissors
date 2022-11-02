@@ -48,8 +48,8 @@
                 <td>
                         <form action = "" method = "get">
                             <input class="form-control w-25" type = "text" name = "search" value = 
-                            "<?php if(isset($_GET["search"])) {echo htmlspecialchars($_GET["search"]);} ?>" >
-                            <input class="btn text-light mt-3" type = "Submit" value = " Search" style="background-color: cadetblue">
+                            "<?php if(isset($_GET["search"])) {echo htmlspecialchars($_GET["search"]);} ?>" />
+                            <input class="btn text-light mt-3" type="Submit" value=" Search" style="background-color: cadetblue"/>
                         </form>
                 </td>
             </tr>
