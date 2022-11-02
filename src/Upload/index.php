@@ -107,7 +107,11 @@ if(isset($_FILES["file"])) {
     ?>
     
 
-</body>
+    <?php 
+        if(isset($_SESSION['bgr-title']))
+            include('../../templates/footer.php')
+    ?>
+
 <script>
     function onChange(event){
         img = document.getElementById("preview");

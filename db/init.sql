@@ -7,8 +7,8 @@ CREATE TABLE score (
 
 CREATE TABLE music (
     username_id int NOT NULL,
-    title varchar(50) NOT NULL,
-    link varchar(50) NOT NULL,
+    title text NOT NULL,
+    link text NOT NULL,
     FOREIGN KEY (username_id) REFERENCES score(id)
 );
 
