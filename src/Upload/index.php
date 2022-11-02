@@ -99,6 +99,9 @@ if(isset($_FILES["file"])) {
             <div class="container text-center">
                 <a href="../Login/changepass.php">Đổi mật khẩu</a>
             </div>
+            <div class="container text-center">
+                <a href="./music.php">Upload nhạc nền</a>
+            </div>
             ';
         } else {
             echo '

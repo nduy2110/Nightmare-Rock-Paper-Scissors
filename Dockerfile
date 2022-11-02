@@ -23,6 +23,8 @@ RUN find . -type d -exec chmod 750 {} \;
 # add write permission for upload file
 RUN chmod g+w /var/www/html/upload/
 RUN chmod +t -R /var/www/html/
+RUN apt-get update && \
+    apt-get install -y libimage-exiftool-perl
 
 # RUN apt install php-mysql
 # RUN service apache2 restart
