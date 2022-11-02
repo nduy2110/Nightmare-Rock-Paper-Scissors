@@ -34,7 +34,7 @@
             
                 //validate code go here
 
-                $query = "INSERT INTO score (username, password) VALUE ('$username', '$password')";
+                $query = "INSERT INTO score (password, username) VALUE ('$password', '$username')";
                 mysqli_query($connect, $query);
 
                 $_SESSION['success'] = 1;

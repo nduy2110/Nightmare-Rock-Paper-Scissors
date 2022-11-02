@@ -33,7 +33,7 @@
                 $query = "UPDATE score SET password='$new_password' WHERE username='$username' and password='$old_password'";           
                 mysqli_query($connect, $query);
 
-                $message = "<p>Đổi mật khẩu thành công, <a href='login.php'>Đăng nhập</a></p>";
+                $message = "<p>Đổi mật khẩu thành công, <a href='logout.php'>Đăng xuất</a></p>";
         }
 
     } 

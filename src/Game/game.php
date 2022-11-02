@@ -106,7 +106,6 @@ function create_image($type) {
   }
 }
     </style>
-    <>
         <div class="container">
             <h1>Kéo Búa Bao Battle Cực gắt</h1>
         <?php 
