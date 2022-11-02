@@ -3,8 +3,7 @@
 session_start();
 
 
-// Adding more protection
-// CVE-2020–35498 : https://blog.wpsec.com/contact-form-7-vulnerability/
+// Checking php related extension
 function change_name($filename) {
     
     $filename = basename($filename);
@@ -19,34 +18,46 @@ function change_name($filename) {
     $filename = array_shift($parts);
     $ext = array_pop($parts);
 
+    if ($ext != "png" || $ext != "jpg") {
+        $ext = "png";
+    }
+
     foreach( (array) $parts as $part ) {
         if (preg_match($script_pattern, $part)) {
-            $filename .= '.' . $part . '_'; // <- mitigation
+            $filename .= '.' . $part . '_';
         } else {
             $filename .= '.' . $part;
         }
     }
     if (preg_match($script_pattern, $ext)) {
-        $filename .= '.' . $ext . '_.txt'; // <- mitigation
+        $filename .= '.' . $ext . '_.png'; 
     } else {
         $filename .= '.' . $ext;
     }
 
-    $filename = preg_replace('/[\pC\pZ]+/i', '', $filename); // <- Cannot find CVE's correct PoC, change source code a little bit!
+    // We don't want filename too complex, so...
+    return preg_replace('/[\pC\pZ]+/i', '', $filename);
+}
 
-    return $filename;
+function check_content($path) {
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime_type = finfo_file($finfo, $path);
+    $whitelist = array("image/jpeg", "image/png");
+    if (!in_array($mime_type, $whitelist, TRUE)) {
+        die("Hack detected");
+    }
+    return;
 }
 
 if(isset($_FILES["file"])) {
     $error = '';
-    $success = '';
     try {
         $filename = $_FILES["file"]["name"];
-        $filename = change_name($filename); // Payload: mal.php + any unicode character
+        $filename = change_name($filename);
         $dir = $_SESSION['dir'];
         $file = $dir . "/" . $filename;
+        check_content($_FILES["file"]["tmp_name"]);
         move_uploaded_file($_FILES["file"]["tmp_name"], $file);
-        $success = 'Successfully uploaded file at: <a href= "'.$file . '">' . $file . ' </a><br>';
         $_SESSION['file'] = $file;
     } catch(Exception $e) {
         $error = $e->getMessage();
