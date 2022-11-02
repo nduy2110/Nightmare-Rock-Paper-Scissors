@@ -23,7 +23,6 @@
 
             $file = substr($file, 23);
             $exec = exec('exiftool '. $file .'| grep Title');
-            print($exec);
             $title = substr($exec, 33);
             $_SESSION['bgr-title']=$title;
             
