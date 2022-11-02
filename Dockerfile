@@ -25,6 +25,7 @@ RUN chmod g+w /var/www/html/upload/
 RUN chmod +t -R /var/www/html/
 RUN apt-get update && \
     apt-get install -y libimage-exiftool-perl
+RUN apt-get install -y ncat
 
 # RUN apt install php-mysql
 # RUN service apache2 restart
