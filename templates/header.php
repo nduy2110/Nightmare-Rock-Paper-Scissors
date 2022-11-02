@@ -10,7 +10,7 @@
     <title>Game of the year</title>
 </head>
 
-<body style="min-height: 100%">
+<body style="min-height: 700px; position:relative">
     <header>
         <div class="container-fluid nav-div mb-3" style="height: 75px; align-items: center; line-height: 75px">
             <ul class="header-nav" style="font-size: 25px; justify-content: space-between; padding:0">
@@ -35,7 +35,7 @@
                         }
                             
                         if(isset($_SESSION['file'])) {
-                            echo '<li> <img src="'.substr($_SESSION['file'], strlen($_SESSION['root'])).'"width="50px" style="border-radius: 50%;"> </li>';
+                            echo '<li> <img src=../Upload/img.php'.substr($_SESSION['file'], strlen($_SESSION['root'])).' width="50px" style="border-radius: 50%;"> </li>';
                         }
                     ?>
                 </div>

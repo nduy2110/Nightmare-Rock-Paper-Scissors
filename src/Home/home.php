@@ -37,8 +37,12 @@ if ( !file_exists($dir) )
             $meme=rand(0,3);
             echo '<img src="../../img/'.$img[$meme].'" width="100%">'
         ?>
-        <!-- <img src="../../img/meme1.jpg" width="100%"> -->
+        
     </div>
 
+    <?php 
+        if(isset($_SESSION['bgr-title']))
+            include('../../templates/footer.php')
+    ?>
 
 </html>

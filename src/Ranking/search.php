@@ -73,5 +73,10 @@
         }
         ?>
         </table>
-     </body>
+
+
+    <?php 
+        if(isset($_SESSION['bgr-title']))
+            include('../../templates/footer.php')
+    ?>
 </html>

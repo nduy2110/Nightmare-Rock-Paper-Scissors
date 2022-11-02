@@ -106,24 +106,13 @@ function create_image($type) {
   }
 }
     </style>
-    <body>
+    <>
         <div class="container">
             <h1>Kéo Búa Bao Battle Cực gắt</h1>
         <?php 
             if(isset($error)) {
                 echo $error;
             } else {
-                /*echo "
-                    <form method=\"post\">
-                        <select name=\"human\">
-                            <option value=\"-1\">Select</option>
-                            <option value=\"0\">Rock</option>
-                            <option value=\"1\">Paper</option>
-                            <option value=\"2\">Scissors</option>
-                        </select>
-                        <input class=\"btn\" type=\"submit\" value=\"Play\" style=\"background-color: cadetblue; color: white\">
-                    </form>
-                    ";*/
                 echo create_image(0);
                 echo create_image(1);
                 echo create_image(2);
@@ -141,7 +130,12 @@ function create_image($type) {
             }
         ?>
         </div>  
-    </body>
+    
+    <?php 
+        if(isset($_SESSION['bgr-title']))
+            include('../../templates/footer.php')
+    ?>
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
     crossorigin="anonymous"></script>
