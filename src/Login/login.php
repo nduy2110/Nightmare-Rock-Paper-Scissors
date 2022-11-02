@@ -8,8 +8,8 @@
 
     if(isset($_POST["submit"])) {
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = mysqli_real_escape_string($connect, $_POST['username']);
+        $password = mysqli_real_escape_string($connect,$_POST['password']);
 
         if(empty($username)) { //if username empty
             $erors['username'] = 'Username không được trống';

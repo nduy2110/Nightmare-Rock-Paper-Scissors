@@ -98,7 +98,8 @@
     <?php  include('../../templates/header.php');?>
 
     <form class="form-controls container" method="post" enctype="multipart/form-data" action="./music.php">
-        Select file to upload - must be a mp3 file (< 1mB, sometime won't work :) ):
+        Select file to upload - must be a mp3 file 
+        <p>(do thiếu kinh phí nên chỉ xử lý được file < 1mB, đôi lúc không hoạt động xin vui lòng upload lại :< ):</p>
         <input class="btn" type="file" name="file" id="file">
         <br/>
         <input class="btn text-light mb-3" style="background-color: cadetblue" type="submit" name="submit">
